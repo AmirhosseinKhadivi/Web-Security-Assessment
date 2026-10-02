@@ -1,8 +1,8 @@
-# Sentinel — Web Security Assessment Engine
+# Web Security Assessment
 
-![Sentinel Security Dashboard](app/static/hero-security.png)
+![Web Security Assessment Dashboard](app/static/hero-security.png)
 
-Sentinel is an independent web security assessment platform developed as a Bachelor of Computer Engineering project.
+Web Security Assessment is an independent web security assessment platform developed as a Bachelor of Computer Engineering project.
 
 The system discovers web application attack surfaces, analyzes security configurations, performs controlled vulnerability verification, and generates structured evidence-based reports through a professional local web dashboard.
 
@@ -70,7 +70,7 @@ JSON Report
 Web Dashboard
 ```
 
-Sentinel separates discovery, planning, active verification, findings, and coverage reporting instead of treating every observed condition as a confirmed vulnerability.
+Web Security Assessment separates discovery, planning, active verification, findings, and coverage reporting instead of treating every observed condition as a confirmed vulnerability.
 
 ---
 
@@ -85,13 +85,15 @@ ProjectKarshenasi/
 │   │   ├── browser_xss.py
 │   │   ├── cors.py
 │   │   ├── open_redirect.py
-│   │   └── reflection.py
+│   │   ├── reflection.py
+│   │   └── __init__.py
 │   │
 │   ├── engine/
 │   │   ├── assessment.py
 │   │   ├── crawler.py
 │   │   ├── input_inventory.py
-│   │   └── request_planner.py
+│   │   ├── request_planner.py
+│   │   └── __init__.py
 │   │
 │   ├── static/
 │   │   ├── app.css
@@ -101,27 +103,22 @@ ProjectKarshenasi/
 │   ├── templates/
 │   │   └── index.html
 │   │
+│   ├── __init__.py
 │   └── web.py
 │
 ├── lab/
+│   ├── __init__.py
 │   └── app.py
 │
 ├── tests/
+│   ├── __init__.py
 │   ├── test_headers.py
 │   ├── test_reflection.py
 │   └── test_request_planner.py
 │
-├── legacy/
-│   ├── desktop/
-│   ├── prototypes/
-│   ├── tools/
-│   └── zap/
-│
-├── tools/
 ├── requirements.txt
 ├── run.py
 ├── .gitignore
-├── .gitattributes
 └── README.md
 ```
 
@@ -135,7 +132,7 @@ The project was developed and validated with:
 - Google Chrome
 - Flask
 - Requests
-- Selenium-based browser verification
+- Playwright-based browser verification using Google Chrome
 - Windows 11
 
 Python dependencies are listed in:
@@ -144,7 +141,7 @@ Python dependencies are listed in:
 requirements.txt
 ```
 
-Chrome is required for browser-backed Reflected XSS verification.
+Google Chrome is required for Playwright-backed Reflected XSS verification.
 
 ---
 
@@ -184,7 +181,7 @@ pip install -r requirements.txt
 
 ## Running the Local Security Lab
 
-Sentinel includes a deliberately vulnerable local Flask application for controlled security testing.
+Web Security Assessment includes a deliberately vulnerable local Flask application for controlled security testing.
 
 Start the laboratory application:
 
@@ -198,11 +195,11 @@ The lab will run at:
 http://127.0.0.1:5001/
 ```
 
-Keep this terminal open while testing Sentinel.
+Keep this terminal open while testing Web Security Assessment.
 
 ---
 
-## Running the Sentinel Dashboard
+## Running the Web Security Assessment Dashboard
 
 Open another terminal in the project directory and activate the virtual environment.
 
@@ -212,7 +209,7 @@ Then run:
 python -m app.web
 ```
 
-The Sentinel dashboard will be available at:
+The Web Security Assessment dashboard will be available at:
 
 ```text
 http://127.0.0.1:5000/
@@ -259,7 +256,7 @@ The safe routes are used as negative controls to evaluate whether the scanner di
 
 ## Assessment Pipeline
 
-A Sentinel assessment is divided into several stages.
+A Web Security Assessment scan is divided into several stages.
 
 ### 1. Crawling
 
@@ -305,7 +302,7 @@ Planning does not send additional HTTP requests.
 
 ### Security Misconfiguration
 
-Sentinel analyzes response configuration including:
+Web Security Assessment analyzes response configuration including:
 
 - Content-Security-Policy
 - Frame protection
@@ -323,9 +320,9 @@ Missing defensive headers are reported as security configuration findings and ar
 
 ### Reflected XSS
 
-Supported local laboratory XSS routes are verified using Chrome.
+Supported local laboratory XSS routes are verified using Playwright with the installed Google Chrome browser.
 
-Sentinel uses a unique JavaScript marker and confirms whether the marker actually executes in the browser.
+Web Security Assessment uses a unique JavaScript marker and confirms whether the marker actually executes in the browser.
 
 Example classifications include:
 
@@ -488,7 +485,7 @@ Example verification data may include:
 
 ## Risk and Confidence
 
-Sentinel treats risk and confidence as separate concepts.
+Web Security Assessment treats risk and confidence as separate concepts.
 
 **Risk** represents the security significance of the observed condition.
 
@@ -518,7 +515,7 @@ Grouping records does not prove that they share the same root cause.
 
 ## Coverage Reporting
 
-Sentinel explicitly records what was and was not assessed.
+Web Security Assessment explicitly records what was and was not assessed.
 
 Coverage metadata can include:
 
@@ -580,13 +577,13 @@ Report/
 
 The directory is intentionally excluded from Git version control.
 
-Reports can also be downloaded directly from the Sentinel dashboard.
+Reports can also be downloaded directly from the Web Security Assessment dashboard.
 
 ---
 
 ## Loading Existing Reports
 
-The dashboard can open previously generated Sentinel JSON reports without starting a new scan.
+The dashboard can open previously generated Web Security Assessment JSON reports without starting a new scan.
 
 Use:
 
@@ -661,24 +658,6 @@ For arbitrary websites, security testing should only be performed with explicit 
 
 ---
 
-## Legacy Components
-
-The `legacy/` directory contains earlier prototypes and previous experimental components used during project development.
-
-This includes older desktop interfaces and OWASP ZAP-related experimentation.
-
-These components are preserved for development history and comparison.
-
-The current primary assessment pipeline is located under:
-
-```text
-app/
-```
-
-and operates independently from ZAP.
-
----
-
 ## Development Environment
 
 The project was developed primarily using:
@@ -688,6 +667,7 @@ Windows 11
 Python 3.10
 PyCharm
 Google Chrome
+Playwright
 Flask
 ```
 
@@ -783,7 +763,7 @@ Unauthorized vulnerability testing may violate applicable laws, organizational p
 
 ## Disclaimer
 
-Sentinel is an academic security assessment project.
+Web Security Assessment is an academic security assessment project.
 
 It is not a replacement for:
 
@@ -801,11 +781,8 @@ Scanner results should be interpreted together with their evidence, confidence, 
 
 **Bachelor of Computer Engineering Project**
 
-**Project Title:**  
-Design and Implementation of an Intelligent Web Security Assessment System
-
-**Platform Name:**  
-Sentinel — Web Security Assessment Engine
+**Project Name:**  
+Web Security Assessment
 
 The project demonstrates the design and implementation of an independent web security assessment pipeline combining attack-surface discovery, controlled vulnerability verification, evidence-based reporting, and an interactive web dashboard.
 
