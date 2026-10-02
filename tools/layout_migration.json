@@ -1,0 +1,26 @@
+{
+  "completed_at": "2026-09-22T17:34:08.387547",
+  "backup": "E:\\Projects\\ProjectKarshenasi\\backups\\before-layout-20260922-173407-401352",
+  "moves": {
+    "web_app.py": "app/web.py",
+    "assessment_engine.py": "app/engine/assessment.py",
+    "scanner.py": "app/engine/crawler.py",
+    "input_inventory.py": "app/engine/input_inventory.py",
+    "request_planner.py": "app/engine/request_planner.py",
+    "check_browser_xss.py": "app/checks/browser_xss.py",
+    "check_sqli.py": "app/checks/boolean_sqli.py",
+    "lab_app.py": "lab/app.py",
+    "check_reflection.py": "tests/test_reflection.py",
+    "validate_scanner.py": "tests/test_headers.py",
+    "validate_request_planner.py": "tests/test_request_planner.py",
+    "scan_lab.py": "legacy/zap/scan_lab.py",
+    "scan_ui.py": "legacy/desktop/scan_ui.py",
+    "scan_dashboard.py": "legacy/desktop/scan_dashboard.py",
+    "read_report.py": "legacy/tools/read_report.py",
+    "app.py": "legacy/prototypes/app.py",
+    "main.py": "legacy/prototypes/main.py",
+    "templates/index.html": "app/templates/index.html",
+    "static/app.css": "app/static/app.css",
+    "static/app.js": "app/static/app.js"
+  }
+}

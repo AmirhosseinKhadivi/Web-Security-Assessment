@@ -1,0 +1,1100 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <meta
+        name="csrf-token"
+        content="{{ token }}"
+    >
+
+    <meta
+        name="description"
+        content="Independent web security assessment platform for vulnerability discovery, verification, and technical reporting."
+    >
+
+    <title>Sentinel — Web Security Assessment</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='app.css') }}"
+    >
+
+    <script
+        defer
+        src="{{ url_for('static', filename='app.js') }}"
+    ></script>
+</head>
+
+<body>
+
+<div class="page-shell">
+
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================== -->
+
+    <nav class="topbar">
+
+        <a
+            href="#top"
+            class="brand"
+            aria-label="Sentinel home"
+        >
+            <span class="brand-mark">
+                <span class="brand-mark-core"></span>
+            </span>
+
+            <span class="brand-copy">
+                <strong>Sentinel</strong>
+                <small>Security Assessment Engine</small>
+            </span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#scanner">Scanner</a>
+            <a href="#results">Results</a>
+            <a href="#inputs">Inputs</a>
+            <a href="#inventory-section">Discovery</a>
+            <a href="#console">Console</a>
+        </div>
+
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            Local Engine
+        </div>
+
+    </nav>
+
+
+    <main id="top">
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+
+        <section class="hero">
+
+            <div class="hero-background">
+                <img
+                    src="{{ url_for('static', filename='hero-security.png') }}"
+                    alt=""
+                    class="hero-image"
+                >
+
+                <div class="hero-overlay"></div>
+                <div class="hero-grid"></div>
+                <div class="hero-glow hero-glow-one"></div>
+                <div class="hero-glow hero-glow-two"></div>
+            </div>
+
+
+            <div class="hero-content">
+
+                <div class="hero-copy">
+
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        INDEPENDENT SECURITY ENGINE
+                    </div>
+
+                    <h1>
+                        Advanced Web
+                        <span>Security Assessment</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Discover attack surfaces, validate vulnerabilities,
+                        analyze security controls, and generate evidence-driven
+                        technical reports through an independent assessment engine.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a
+                            href="#scanner"
+                            class="button button-primary"
+                        >
+                            Start Assessment
+
+                            <span aria-hidden="true">
+                                →
+                            </span>
+                        </a>
+
+                        <a
+                            href="#results"
+                            class="button button-ghost"
+                        >
+                            View Dashboard
+                        </a>
+
+                    </div>
+
+
+                    <div class="hero-features">
+
+                        <div class="hero-feature">
+                            <span class="feature-icon">
+                                ✓
+                            </span>
+
+                            <div>
+                                <strong>Independent Engine</strong>
+                                <span>No external scanner dependency</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-feature">
+                            <span class="feature-icon">
+                                ✓
+                            </span>
+
+                            <div>
+                                <strong>Evidence Driven</strong>
+                                <span>Technical verification for findings</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-feature">
+                            <span class="feature-icon">
+                                ✓
+                            </span>
+
+                            <div>
+                                <strong>Local Processing</strong>
+                                <span>Assessment runs on your machine</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="hero-console"
+                    aria-hidden="true"
+                >
+
+                    <div class="console-window">
+
+                        <div class="console-titlebar">
+
+                            <div class="window-controls">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <span>
+                                assessment-engine
+                            </span>
+
+                            <span class="console-live">
+                                LIVE
+                            </span>
+
+                        </div>
+
+
+                        <div class="console-body">
+
+                            <div class="console-command">
+                                <span class="prompt">$</span>
+                                sentinel scan
+                                http://127.0.0.1:5001/
+                            </div>
+
+                            <div class="console-line muted">
+                                Initializing independent assessment engine...
+                            </div>
+
+                            <div class="console-line">
+                                <span class="console-success">
+                                    ✓
+                                </span>
+                                Crawling application surface
+                            </div>
+
+                            <div class="console-line">
+                                <span class="console-success">
+                                    ✓
+                                </span>
+                                Discovering input parameters
+                            </div>
+
+                            <div class="console-line">
+                                <span class="console-warning">
+                                    !
+                                </span>
+                                Testing security controls
+                            </div>
+
+                            <div class="console-line finding">
+                                HIGH
+                                Reflected XSS confirmed
+                            </div>
+
+                            <div class="console-line finding">
+                                HIGH
+                                Boolean SQL injection behavior
+                            </div>
+
+                            <div class="console-line finding medium">
+                                MEDIUM
+                                Open redirect confirmed
+                            </div>
+
+                            <div class="console-progress">
+                                <span></span>
+                            </div>
+
+                            <div class="console-footer">
+                                Assessment pipeline active
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-bottom-line"></div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SYSTEM STRIP
+        ====================================================== -->
+
+        <section class="system-strip">
+
+            <div class="system-item">
+                <span class="system-label">
+                    Engine
+                </span>
+
+                <strong>
+                    Independent HTTP Assessment
+                </strong>
+            </div>
+
+            <div class="system-item">
+                <span class="system-label">
+                    Mode
+                </span>
+
+                <strong>
+                    Local + Controlled Active Checks
+                </strong>
+            </div>
+
+            <div class="system-item">
+                <span class="system-label">
+                    Coverage
+                </span>
+
+                <strong>
+                    Discovery · Headers · XSS · SQLi · Redirect · CORS
+                </strong>
+            </div>
+
+            <div class="system-item">
+                <span class="system-label">
+                    Report
+                </span>
+
+                <strong>
+                    Structured JSON Evidence
+                </strong>
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SCANNER
+        ====================================================== -->
+
+        <section
+            class="dashboard-section scanner-section"
+            id="scanner"
+        >
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-kicker">
+                        ASSESSMENT ENGINE
+                    </span>
+
+                    <h2>
+                        Start Security Assessment
+                    </h2>
+
+                    <p>
+                        Enter an authorized target and launch the independent
+                        assessment pipeline.
+                    </p>
+                </div>
+
+                <div class="section-number">
+                    01
+                </div>
+
+            </div>
+
+
+            <div class="scanner-layout">
+
+                <div class="scanner-card">
+
+                    <div class="scanner-card-head">
+
+                        <div>
+                            <span class="scanner-status-dot"></span>
+                            Scanner Ready
+                        </div>
+
+                        <span>
+                            LOCAL ENGINE
+                        </span>
+
+                    </div>
+
+
+                    <form id="scan-form">
+
+                        <label
+                            class="target-label"
+                            for="target"
+                        >
+                            Target URL
+                        </label>
+
+
+                        <div class="target-control">
+
+                            <span
+                                class="target-icon"
+                                aria-hidden="true"
+                            >
+                                ⌁
+                            </span>
+
+                            <input
+                                id="target"
+                                type="url"
+                                value="http://127.0.0.1:5001/"
+                                placeholder="https://your-website.example/"
+                                autocomplete="url"
+                                spellcheck="false"
+                                required
+                            >
+
+                            <button
+                                id="start"
+                                type="submit"
+                                class="scan-button"
+                            >
+                                <span>
+                                    Start Assessment
+                                </span>
+
+                                <span
+                                    class="scan-button-icon"
+                                    aria-hidden="true"
+                                >
+                                    →
+                                </span>
+                            </button>
+
+                        </div>
+
+                    </form>
+
+
+                    <div class="scan-meta">
+
+                        <div>
+                            <span>Discovery limit</span>
+                            <strong>20 pages</strong>
+                        </div>
+
+                        <div>
+                            <span>Scope</span>
+                            <strong>Same origin</strong>
+                        </div>
+
+                        <div>
+                            <span>Report format</span>
+                            <strong>JSON</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="scanner-notice">
+
+                        <span class="notice-icon">
+                            !
+                        </span>
+
+                        <p>
+                            Assess only systems you own or have explicit
+                            authorization to test. Active vulnerability
+                            verification is restricted to supported local
+                            laboratory routes.
+                        </p>
+
+                    </div>
+
+
+                    <div class="scan-status-area">
+
+                        <div class="scan-status-row">
+
+                            <span>
+                                Engine status
+                            </span>
+
+                            <p
+                                id="status"
+                                role="status"
+                                aria-live="polite"
+                            >
+                                Ready
+                            </p>
+
+                        </div>
+
+                        <progress
+                            id="busy"
+                            aria-label="Assessment in progress"
+                            hidden
+                        ></progress>
+
+                    </div>
+
+                </div>
+
+
+                <aside class="capability-card">
+
+                    <span class="section-kicker">
+                        ASSESSMENT PIPELINE
+                    </span>
+
+                    <h3>
+                        Security Coverage
+                    </h3>
+
+
+                    <div class="capability-list">
+
+                        <div class="capability-item">
+                            <span>01</span>
+
+                            <div>
+                                <strong>Attack Surface Discovery</strong>
+                                <p>
+                                    Pages, parameters, forms, and same-origin routes.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="capability-item">
+                            <span>02</span>
+
+                            <div>
+                                <strong>Security Misconfiguration</strong>
+                                <p>
+                                    Headers, cookies, server disclosure, and error leakage.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="capability-item">
+                            <span>03</span>
+
+                            <div>
+                                <strong>Active Verification</strong>
+                                <p>
+                                    XSS, boolean SQL injection, redirects, and CORS.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="capability-item">
+                            <span>04</span>
+
+                            <div>
+                                <strong>Evidence Reporting</strong>
+                                <p>
+                                    Findings, verification results, coverage, and limitations.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             RESULTS
+        ====================================================== -->
+
+        <section
+            class="dashboard-section"
+            id="results"
+        >
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-kicker">
+                        SECURITY INTELLIGENCE
+                    </span>
+
+                    <h2>
+                        Assessment Results
+                    </h2>
+
+                    <p>
+                        Review identified findings, risk levels,
+                        evidence, and technical verification data.
+                    </p>
+                </div>
+
+                <div class="section-number">
+                    02
+                </div>
+
+            </div>
+
+
+            <div class="panel result-panel">
+
+                <div class="panel-toolbar">
+
+                    <div class="report-identity">
+
+                        <div class="report-icon">
+                            ◫
+                        </div>
+
+                        <div>
+                            <span class="toolbar-label">
+                                CURRENT REPORT
+                            </span>
+
+                            <p
+                                id="report-target"
+                                class="report-target"
+                            >
+                                No report loaded.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="actions">
+
+                        <label class="file-button">
+
+                            <span>
+                                Open JSON Report
+                            </span>
+
+                            <input
+                                id="file"
+                                type="file"
+                                accept=".json,application/json"
+                            >
+
+                        </label>
+
+
+                        <a
+                            id="download"
+                            class="button button-secondary"
+                            hidden
+                        >
+                            Download Report
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="summary"
+                    class="summary"
+                ></div>
+
+
+                <div class="coverage-box">
+
+                    <span class="toolbar-label">
+                        COVERAGE
+                    </span>
+
+                    <p
+                        id="coverage"
+                        class="coverage-text"
+                    ></p>
+
+                </div>
+
+
+                <div class="filters">
+
+                    <label>
+                        <span>
+                            Risk Level
+                        </span>
+
+                        <select id="risk">
+                            <option value="All">
+                                All risks
+                            </option>
+
+                            <option value="High">
+                                High
+                            </option>
+
+                            <option value="Medium">
+                                Medium
+                            </option>
+
+                            <option value="Low">
+                                Low
+                            </option>
+
+                            <option value="Informational">
+                                Informational
+                            </option>
+                        </select>
+                    </label>
+
+
+                    <label class="search-label">
+
+                        <span>
+                            Search Findings
+                        </span>
+
+                        <input
+                            id="search"
+                            type="search"
+                            placeholder="Finding, URL, parameter..."
+                        >
+
+                    </label>
+
+
+                    <button
+                        id="clear"
+                        type="button"
+                        class="button button-secondary"
+                    >
+                        Clear Filters
+                    </button>
+
+                </div>
+
+
+                <div class="table-status">
+
+                    <p
+                        id="count"
+                        class="hint"
+                    >
+                        Showing 0 records.
+                    </p>
+
+                </div>
+
+
+                <div class="table-wrap">
+
+                    <table>
+
+                        <thead>
+                        <tr>
+                            <th>Risk</th>
+                            <th>Finding</th>
+                            <th>URL</th>
+                            <th>Details</th>
+                        </tr>
+                        </thead>
+
+                        <tbody id="rows"></tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="report-note">
+
+                    <span>
+                        i
+                    </span>
+
+                    <p>
+                        Finding records may represent the same configuration
+                        issue across multiple routes. No findings does not
+                        mean the assessed application is secure.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             INPUT CHECKS
+        ====================================================== -->
+
+        <section
+            class="dashboard-section"
+            id="inputs"
+        >
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-kicker">
+                        INPUT ANALYSIS
+                    </span>
+
+                    <h2>
+                        Input Checks
+                    </h2>
+
+                    <p>
+                        Inspect discovered inputs, planning decisions,
+                        and reflection-check status.
+                    </p>
+                </div>
+
+                <div class="section-number">
+                    03
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="input-toolbar">
+
+                    <div>
+
+                        <span class="toolbar-label">
+                            QUERY & FORM INVENTORY
+                        </span>
+
+                        <p>
+                            Planned query checks and excluded inputs are
+                            shown independently from active vulnerability
+                            verification stages.
+                        </p>
+
+                    </div>
+
+
+                    <label class="compact-search">
+
+                        <span>
+                            Search Inputs
+                        </span>
+
+                        <input
+                            id="input-search"
+                            type="search"
+                            placeholder="URL, parameter, status..."
+                        >
+
+                    </label>
+
+                </div>
+
+
+                <p
+                    id="input-count"
+                    class="hint"
+                >
+                    No report loaded.
+                </p>
+
+
+                <div class="table-wrap">
+
+                    <table>
+
+                        <thead>
+                        <tr>
+                            <th>Input</th>
+                            <th>URL</th>
+                            <th>Parameter</th>
+                            <th>Check Status</th>
+                            <th>Details</th>
+                        </tr>
+                        </thead>
+
+                        <tbody id="input-rows"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             DISCOVERY
+        ====================================================== -->
+
+        <section
+            class="dashboard-section"
+            id="inventory-section"
+        >
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-kicker">
+                        DISCOVERY
+                    </span>
+
+                    <h2>
+                        Pages & Forms
+                    </h2>
+
+                    <p>
+                        Raw discovery information collected by the
+                        independent crawler.
+                    </p>
+                </div>
+
+                <div class="section-number">
+                    04
+                </div>
+
+            </div>
+
+
+            <div class="panel terminal-panel">
+
+                <div class="terminal-header">
+
+                    <div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <strong>
+                        discovery.inventory
+                    </strong>
+
+                </div>
+
+                <pre id="inventory">No discovery data available.</pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             LOG
+        ====================================================== -->
+
+        <section
+            class="dashboard-section"
+            id="console"
+        >
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-kicker">
+                        ENGINE CONSOLE
+                    </span>
+
+                    <h2>
+                        Assessment Log
+                    </h2>
+
+                    <p>
+                        Live execution messages from the assessment pipeline.
+                    </p>
+                </div>
+
+                <div class="section-number">
+                    05
+                </div>
+
+            </div>
+
+
+            <div class="panel terminal-panel">
+
+                <div class="terminal-header">
+
+                    <div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <strong>
+                        assessment.log
+                    </strong>
+
+                    <span class="terminal-status">
+                        LOCAL
+                    </span>
+
+                </div>
+
+                <pre id="log">No assessment has started.</pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             FOOTER
+        ====================================================== -->
+
+        <footer class="site-footer">
+
+            <div>
+
+                <div class="brand footer-brand">
+
+                    <span class="brand-mark">
+                        <span class="brand-mark-core"></span>
+                    </span>
+
+                    <span class="brand-copy">
+                        <strong>
+                            Sentinel
+                        </strong>
+
+                        <small>
+                            Independent Security Assessment
+                        </small>
+                    </span>
+
+                </div>
+
+                <p>
+                    Bachelor Project · Independent Web Security
+                    Assessment Engine
+                </p>
+
+            </div>
+
+
+            <div class="footer-meta">
+
+                <span>
+                    Local Processing
+                </span>
+
+                <span>
+                    Evidence-Based Reporting
+                </span>
+
+                <span>
+                    Authorized Testing Only
+                </span>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     DETAILS DIALOG
+========================================================== -->
+
+<dialog
+    id="details"
+    aria-labelledby="detail-title"
+>
+
+    <div class="dialog-shell">
+
+        <div class="dialog-header">
+
+            <div>
+
+                <span class="section-kicker">
+                    FINDING DETAILS
+                </span>
+
+                <h2 id="detail-title">
+                    Details
+                </h2>
+
+            </div>
+
+
+            <button
+                id="close"
+                type="button"
+                class="dialog-close"
+                aria-label="Close details"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="detail-body"
+            class="dialog-body"
+        ></div>
+
+    </div>
+
+</dialog>
+
+</body>
+</html>
